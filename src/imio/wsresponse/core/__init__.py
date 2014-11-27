@@ -1,2 +1,10 @@
-def initialize(context):
-    """Initializer called when used as a Zope 2 product."""
+# encoding: utf-8
+
+from imio.wsresponse.core.interfaces import IResponse
+from imio.wsresponse.core.request import Request
+
+
+__all__ = (
+    IResponse.__name__,
+    Request.__name__,
+)
