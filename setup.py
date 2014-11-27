@@ -40,6 +40,8 @@ setup(
     zip_safe=False,
     install_requires=[
         'setuptools',
+        'Plone',
+        'collective.zamqp',
     ],
     extras_require={'test': ['plone.app.testing']},
     entry_points="""
