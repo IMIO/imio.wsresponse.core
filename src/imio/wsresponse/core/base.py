@@ -1,6 +1,10 @@
 # encoding: utf-8
 
 from App.config import getConfiguration
+from collective.zamqp.interfaces import IBrokerConnection
+from pika import ConnectionParameters
+from pika import PlainCredentials
+from zope.component import getUtility
 
 
 def get_config(key):
@@ -9,6 +13,23 @@ def get_config(key):
     if package_config is None:
         raise ValueError('The config for the package is missing')
     return package_config.get(key, '')
+
+
+def get_rabbitmq_connection():
+    connection = getUtility(IBrokerConnection, name='ws.response')
+    credentials = PlainCredentials(
+        connection.username,
+        connection.password,
+        erase_on_connect=False,
+    )
+    parameters = ConnectionParameters(
+        connection.hostname,
+        connection.port,
+        connection.virtual_host,
+        credentials=credentials,
+        heartbeat=True)
+    parameters.heartbeat = connection.heartbeat
+    return parameters
 
 
 class ResponseConsumer(object):

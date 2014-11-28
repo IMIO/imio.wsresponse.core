@@ -42,6 +42,9 @@ setup(
         'setuptools',
         'Plone',
         'collective.zamqp',
+        'five.grok',
+        'imio.amqp',
+        'imio.dataexchange.core',
     ],
     extras_require={'test': ['plone.app.testing']},
     entry_points="""
