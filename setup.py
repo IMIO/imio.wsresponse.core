@@ -45,6 +45,7 @@ setup(
         'five.grok',
         'imio.amqp',
         'imio.dataexchange.core',
+        'plone.api',
     ],
     extras_require={'test': ['plone.app.testing']},
     entry_points="""
