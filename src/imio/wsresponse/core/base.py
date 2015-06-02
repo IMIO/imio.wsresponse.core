@@ -2,6 +2,7 @@
 
 from App.config import getConfiguration
 from collective.zamqp.interfaces import IBrokerConnection
+from five import grok
 from pika import ConnectionParameters
 from pika import PlainCredentials
 from zope.component import getUtility
@@ -42,3 +43,12 @@ class ResponseConsumer(object):
     @property
     def routing_key(self):
         return get_config('routing_key')
+
+
+class Validator(grok.Adapter):
+
+    def __init__(self, context):
+        self.context = context
+
+    def validate(self):
+        raise NotImplementedError()
