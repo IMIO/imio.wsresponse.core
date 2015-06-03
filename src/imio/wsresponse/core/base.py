@@ -10,7 +10,7 @@ from zope.component import getUtility
 
 def get_config(key):
     config = getattr(getConfiguration(), 'product_config', {})
-    package_config = config.get('imio.wsrequest.core')
+    package_config = config.get('imio.wsresponse.core')
     if package_config is None:
         raise ValueError('The config for the package is missing')
     return package_config.get(key, '')
