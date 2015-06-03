@@ -42,7 +42,7 @@ class ResponseConsumer(object):
 
     @property
     def routing_key(self):
-        return get_config('routing_key').upper()
+        return self.queue
 
 
 class Validator(grok.Adapter):
