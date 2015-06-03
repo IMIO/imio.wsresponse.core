@@ -38,11 +38,11 @@ class ResponseConsumer(object):
     @property
     def queue(self):
         client_id = get_config('client_id')
-        return self.queuename.format(client_id)
+        return self.queuename.format(client_id).upper()
 
     @property
     def routing_key(self):
-        return get_config('routing_key')
+        return get_config('routing_key').upper()
 
 
 class Validator(grok.Adapter):
